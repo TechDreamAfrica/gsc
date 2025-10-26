@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Global Smile Consulting</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/admin-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="admin-body">
+    <!-- Admin Navigation -->
+    <nav class="admin-navbar">
+        <div class="admin-nav-container">
+            <div class="admin-logo">
+                <i class="fas fa-smile"></i>
+                <span>Global Smile Admin</span>
+            </div>
+            <div class="admin-user">
+                <span id="adminEmail"></span>
+                <button id="logoutBtn" class="btn btn-logout">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <ul class="admin-menu">
+                <li class="menu-item active">
+                    <a href="admin-dashboard.html">
+                        <i class="fas fa-dashboard"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="admin-about.html">
+                        <i class="fas fa-info-circle"></i>
+                        <span>About Section</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="admin-services.html">
+                        <i class="fas fa-cogs"></i>
+                        <span>Services</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="admin-statistics.html">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Statistics</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="admin-packages.html">
+                        <i class="fas fa-box"></i>
+                        <span>Service Packages</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="admin-applications.html">
+                        <i class="fas fa-file-alt"></i>
+                        <span>Applications</span>
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-content">
+            <div class="content-header">
+                <h1>Dashboard</h1>
+                <p>Welcome to the Global Smile Consulting Admin Portal</p>
+            </div>
+
+            <div class="dashboard-stats">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="servicesCount">0</h3>
+                        <p>Total Services</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-box"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="packagesCount">0</h3>
+                        <p>Service Packages</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="statsCount">0</h3>
+                        <p>Statistics</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-info-circle"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="aboutSectionsCount">0</h3>
+                        <p>About Sections</p>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-file-alt"></i>
+                    </div>
+                    <div class="stat-info">
+                        <h3 id="applicationsCount">0</h3>
+                        <p>Applications</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="dashboard-grid">
+                <div class="dashboard-card">
+                    <h2>Quick Actions</h2>
+                    <div class="quick-actions">
+                        <a href="admin-services.html" class="action-btn">
+                            <i class="fas fa-plus"></i>
+                            Add New Service
+                        </a>
+                        <a href="admin-packages.html" class="action-btn">
+                            <i class="fas fa-plus"></i>
+                            Add New Package
+                        </a>
+                        <a href="admin-statistics.html" class="action-btn">
+                            <i class="fas fa-plus"></i>
+                            Update Statistics
+                        </a>
+                        <a href="admin-about.html" class="action-btn">
+                            <i class="fas fa-edit"></i>
+                            Edit About Section
+                        </a>
+                        <a href="admin-applications.html" class="action-btn">
+                            <i class="fas fa-file-alt"></i>
+                            View Applications
+                        </a>
+                    </div>
+                </div>
+
+                <div class="dashboard-card">
+                    <h2>Website Links</h2>
+                    <div class="website-links">
+                        <a href="../index.html" target="_blank" class="website-link">
+                            <i class="fas fa-home"></i>
+                            View Homepage
+                        </a>
+                        <a href="../services.html" target="_blank" class="website-link">
+                            <i class="fas fa-list"></i>
+                            View Services Page
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-storage-compat.js"></script>
+
+    <!-- Firebase Config -->
+    <script src="../js/firebase-config.js"></script>
+
+    <!-- Dashboard Script -->
+    <script>
+        // Whitelist of authorized admin emails
+        const AUTHORIZED_EMAILS = [
+            'globalsmileconsulting@gmail.com',
+            'admin@globalsmileconsulting.com'
+        ];
+
+        function isAuthorizedEmail(email) {
+            return AUTHORIZED_EMAILS.includes(email.toLowerCase().trim());
+        }
+
+        // Check authentication with email whitelist only
+        auth.onAuthStateChanged(async (user) => {
+            if (!user) {
+                window.location.href = 'admin-login.html';
+                return;
+            }
+
+            // Verify email is authorized (no admin claim check needed)
+            if (!isAuthorizedEmail(user.email)) {
+                await auth.signOut();
+                alert('Unauthorized: This email is not authorized to access the admin panel');
+                window.location.href = 'admin-login.html';
+                return;
+            }
+
+            // User is authenticated and whitelisted - grant access
+            document.getElementById('adminEmail').textContent = user.email;
+
+            // Load dashboard stats
+            loadDashboardStats();
+        });
+
+        // Logout functionality
+        document.getElementById('logoutBtn').addEventListener('click', async () => {
+            try {
+                await auth.signOut();
+                window.location.href = 'admin-login.html';
+            } catch (error) {
+                console.error('Logout error:', error);
+            }
+        });
+
+        // Load dashboard statistics
+        async function loadDashboardStats() {
+            try {
+                // Count services
+                const servicesSnapshot = await db.collection('services').get();
+                document.getElementById('servicesCount').textContent = servicesSnapshot.size;
+
+                // Count packages
+                const packagesSnapshot = await db.collection('packages').get();
+                document.getElementById('packagesCount').textContent = packagesSnapshot.size;
+
+                // Count statistics
+                const statsSnapshot = await db.collection('statistics').get();
+                document.getElementById('statsCount').textContent = statsSnapshot.size;
+
+                // Count about sections
+                const aboutSnapshot = await db.collection('about').get();
+                document.getElementById('aboutSectionsCount').textContent = aboutSnapshot.size;
+
+                // Count applications
+                const applicationsSnapshot = await db.collection('applications').get();
+                document.getElementById('applicationsCount').textContent = applicationsSnapshot.size;
+            } catch (error) {
+                console.error('Error loading stats:', error);
+            }
+        }
+    </script>
+</body>
+</html>

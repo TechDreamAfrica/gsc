@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Smile Consulting Ltd - Empowering Business Leaders</title>
+    <meta name="description" content="Ghana-based business consultancy offering comprehensive services including accounting, HR management, business development, training, marketing, regulatory compliance, and legal services. Empowering SMEs in Agona Swedru and across Ghana.">
+    <meta name="keywords" content="business consulting Ghana, accounting services, HR management, business development, entrepreneurship training, regulatory compliance, legal services, Agona Swedru, business registration Ghana">
+    <meta name="author" content="Global Smile Consulting Ltd">
+    <meta property="og:title" content="Global Smile Consulting Ltd - Empowering Business Leaders">
+    <meta property="og:description" content="Ghana-based business consultancy offering comprehensive services including accounting, HR management, business development, training, marketing, regulatory compliance, and legal services.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://globalsmileconsulting.com">
+    <meta property="og:image" content="https://globalsmileconsulting.com/images/logo.png">
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- JSON-LD Schema for Local Business -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "Global Smile Consulting Ltd",
+        "description": "Ghana-based business consultancy offering comprehensive services including accounting, HR management, business development, training, marketing, regulatory compliance, and legal services.",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Agona Swedru",
+            "addressCountry": "Ghana"
+        },
+        "telephone": "+233243434872",
+        "url": "https://globalsmileconsulting.com",
+        "areaServed": "Ghana",
+        "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Business Consulting Services",
+            "itemListElement": [
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Business Development & Strategy"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Accounting & Financial Management"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Human Resources Management"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Entrepreneurship Training"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Marketing & Digital Strategy"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Regulatory Compliance"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Legal Documentation & Support"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Event Management"
+                    }
+                }
+            ]
+        }
+    }
+    </script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-smile"></i>
+                <span>Global Smile Consulting</span>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="#home" class="nav-link">Home</a>
+                <a href="#about" class="nav-link">About</a>
+                <div class="nav-dropdown">
+                    <a href="#" class="nav-link dropdown-toggle">
+                        Company <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="#approach" class="dropdown-item">Our Approach</a>
+                        <a href="#values" class="dropdown-item">Our Values</a>
+                        <a href="#services" class="dropdown-item">Services Overview</a>
+                        <a href="services.html" class="dropdown-item">All Services</a>
+                    </div>
+                </div>
+                <a href="#contact" class="nav-link">Contact</a>
+                <a href="apply.html" class="btn btn-primary" style="margin-left: 1rem;">
+                    <i class="fas fa-paper-plane"></i> Apply Now
+                </a>
+                <a href="admin/admin-login.html" class="btn-admin">
+                    <i class="fas fa-lock"></i> Admin
+                </a>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section with Carousel -->
+    <section id="home" class="hero">
+        <div class="hero-carousel">
+            <div class="carousel-slide active">
+                <div class="carousel-bg" style="background-image: url('https://images.unsplash.com/photo-1552664730-d307ca884978?w=1920&q=80');"></div>
+                <div class="carousel-overlay"></div>
+            </div>
+            <div class="carousel-slide">
+                <div class="carousel-bg" style="background-image: url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1920&q=80');"></div>
+                <div class="carousel-overlay"></div>
+            </div>
+            <div class="carousel-slide">
+                <div class="carousel-bg" style="background-image: url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1920&q=80');"></div>
+                <div class="carousel-overlay"></div>
+            </div>
+        </div>
+        <div class="carousel-controls">
+            <button class="carousel-btn prev" onclick="moveCarousel(-1)">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="carousel-btn next" onclick="moveCarousel(1)">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+        <div class="carousel-indicators">
+            <span class="indicator active" onclick="setCarouselSlide(0)"></span>
+            <span class="indicator" onclick="setCarouselSlide(1)"></span>
+            <span class="indicator" onclick="setCarouselSlide(2)"></span>
+        </div>
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1 class="hero-title">Building the Next Generation of <span class="highlight">Business Leaders</span></h1>
+                <p class="hero-subtitle">Driving transformative growth in emerging and developing economies through expert consulting, strategic guidance, and innovative solutions.</p>
+                <div class="hero-buttons">
+                    <a href="#contact" class="btn btn-primary">Get Started</a>
+                    <a href="#about" class="btn btn-secondary">Learn More</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-graphic">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Overview -->
+    <section class="services-overview">
+        <div class="container">
+            <div class="services-grid">
+                <div class="service-card">
+                    <i class="fas fa-rocket"></i>
+                    <h3>Business Acceleration</h3>
+                    <p>Unlock growth opportunities and scale your business</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-calculator"></i>
+                    <h3>Financial Services</h3>
+                    <p>Comprehensive accounting and financial solutions</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Investment Readiness</h3>
+                    <p>Bridge funding gaps and attract investors</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-users"></i>
+                    <h3>HR Management</h3>
+                    <p>Human resource management and development</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2>About Global Smile Consulting Ltd</h2>
+                <p>Your trusted partner in business transformation and growth</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>Global Smile Consulting Ltd is a Ghana-based one-stop-shop management consultancy company that offers specialized services tailored to the business needs of our clients. We are a leading-edge business acceleration and Impact Investment platform dedicated to empowering Small and Growing Businesses to achieve sustainability, scalability, and investment readiness.</p>
+                    
+                    <p>We assist businesses in bridging the early and missing middle funding gap by connecting Micro Small and Medium Enterprises (MSMEs) with essential capital for growth. Our team of experienced professionals offers a comprehensive range of accounting services and business solutions.</p>
+                    
+                    <p>Driven by passion and expertise, our team of highly motivated professionals are ready to collaborate with clients to unlock their full potential. We have a proven track record of working closely with both local and international development organizations and agencies.</p>
+                </div>
+                <div class="about-stats">
+                    <div class="stat">
+                        <h3>500+</h3>
+                        <p>Businesses Empowered</p>
+                    </div>
+                    <div class="stat">
+                        <h3>50+</h3>
+                        <p>Expert Consultants</p>
+                    </div>
+                    <div class="stat">
+                        <h3>10+</h3>
+                        <p>Years Experience</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Comprehensive Services</h2>
+                <p>Tailored solutions for your business success</p>
+                <a href="services.html" class="btn btn-primary" style="margin-top: 1rem;">View All Services & Pricing</a>
+            </div>
+            <div class="services-grid-detailed">
+                <div class="service-item">
+                    <div class="service-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>Business Support & Management</h3>
+                    <p>Strategic planning, operational optimization, and comprehensive business management solutions.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <h3>Financial Services</h3>
+                    <p>Financial statement preparation, bookkeeping, payroll management, financial analysis and planning.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">
+                        <i class="fas fa-bullhorn"></i>
+                    </div>
+                    <h3>Marketing & Growth</h3>
+                    <p>Strategic marketing solutions to help you attract clients and expand your market reach.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3>Auditing & Compliance</h3>
+                    <p>Ensure regulatory compliance and maintain the highest standards of business operations.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <h3>Training & Development</h3>
+                    <p>Entrepreneurship and skill development training programs to build capacity.</p>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <h3>Investment Facilitation</h3>
+                    <p>Connect MSMEs with essential capital and prepare businesses for investment opportunities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Approach Section -->
+    <section id="approach" class="approach">
+        <div class="container">
+            <div class="approach-content">
+                <div class="approach-text">
+                    <h2>Our Approach</h2>
+                    <p>We understand the immense potential for growth and development that exists within the business environment. Leveraging our innovative and dynamic capabilities, we design and manage cutting-edge programs and projects that drive the growth of MSMEs.</p>
+                    <p>Through our expertise and commitment, we help businesses flourish and create lasting impact. Our team of dedicated experts is committed to propelling your business forward, tailoring solutions to meet your unique needs and ambitions.</p>
+                    <div class="approach-features">
+                        <div class="feature">
+                            <i class="fas fa-lightbulb"></i>
+                            <span>Innovative Solutions</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-target"></i>
+                            <span>Tailored Strategies</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-award"></i>
+                            <span>Expert Guidance</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="approach-visual">
+                    <div class="process-steps">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <h4>Assess</h4>
+                            <p>Understand your business needs</p>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <h4>Strategy</h4>
+                            <p>Develop tailored solutions</p>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <h4>Implement</h4>
+                            <p>Execute with precision</p>
+                        </div>
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <h4>Support</h4>
+                            <p>Ongoing guidance & monitoring</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vision & Mission -->
+    <section class="vision-mission">
+        <div class="container">
+            <div class="vm-grid">
+                <div class="vm-card">
+                    <h3><i class="fas fa-eye"></i> Our Vision</h3>
+                    <p>To be a leading business management consultancy firm, empowering entrepreneurs, businesses, and organizations to achieve their full potential through innovative solutions, expert guidance, and exceptional service.</p>
+                </div>
+                <div class="vm-card">
+                    <h3><i class="fas fa-bullseye"></i> Our Mission</h3>
+                    <p>To provide comprehensive business management consultancy services, tailored to meet the unique needs of our clients, fostering sustainable growth, profitability, and success, while maintaining the highest standards of professionalism, integrity, and customer satisfaction.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Core Values -->
+    <section id="values" class="values">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Core Values</h2>
+                <p>The principles that guide everything we do</p>
+            </div>
+            <div class="values-grid">
+                <div class="value-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Customer-Centricity</h3>
+                    <p>We prioritize our clients' needs, delivering personalized solutions that exceed their expectations.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-brain"></i>
+                    <h3>Expertise</h3>
+                    <p>We maintain a team of highly skilled professionals, staying up-to-date with industry trends and best practices.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Integrity</h3>
+                    <p>We operate with transparency, honesty, and ethics, building trust with our clients and stakeholders.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-rocket"></i>
+                    <h3>Innovation</h3>
+                    <p>We encourage creativity, embracing new ideas and innovative solutions to drive business growth and success.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Collaboration</h3>
+                    <p>We foster a culture of teamwork, partnering with clients, stakeholders, and industry experts to achieve common goals.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-check-circle"></i>
+                    <h3>Accountability</h3>
+                    <p>We take ownership of our actions, delivering on our promises and being accountable for our results.</p>
+                </div>
+                <div class="value-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Continuous Learning</h3>
+                    <p>We prioritize professional development, staying informed about industry developments and best practices.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Get In Touch</h2>
+                <p>Ready to transform your business? Let's start the conversation.</p>
+            </div>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Contact Information</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Location</h4>
+                            <p>Agona Swedru, Ghana</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Phone</h4>
+                            <p>0243434872</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>info@globalsmileconsulting.com</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Subject" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Your Message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-smile"></i>
+                        <span>Global Smile Consulting</span>
+                    </div>
+                    <p>Empowering businesses to achieve their full potential through innovative solutions and expert guidance.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <ul>
+                        <li><a href="services.html#business">Business Development</a></li>
+                        <li><a href="services.html#accounting">Accounting Services</a></li>
+                        <li><a href="services.html#hr">Human Resources</a></li>
+                        <li><a href="services.html#training">Training & Development</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <div class="contact-info-footer">
+                        <p><i class="fas fa-map-marker-alt"></i> Agona Swedru, Ghana</p>
+                        <p><i class="fas fa-phone"></i> 0243434872</p>
+                        <p><i class="fas fa-envelope"></i> info@globalsmileconsulting.com</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Global Smile Consulting Ltd. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Firebase SDKs (Optional - loads data dynamically if Firebase is configured) -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="js/firebase-config.js"></script>
+    <script src="js/firebase-data.js"></script>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

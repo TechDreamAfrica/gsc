@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login - Global Smile Consulting</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/admin-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="admin-login-body">
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <i class="fas fa-smile"></i>
+                <h1>Global Smile Consulting</h1>
+                <p>Admin Portal</p>
+            </div>
+
+            <form id="loginForm" class="login-form">
+                <div class="form-group">
+                    <label for="email">
+                        <i class="fas fa-envelope"></i>
+                        Email Address
+                    </label>
+                    <input type="email" id="email" name="email" required placeholder="admin@globalsmileconsulting.com">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">
+                        <i class="fas fa-lock"></i>
+                        Password
+                    </label>
+                    <input type="password" id="password" name="password" required placeholder="Enter your password">
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary btn-login">
+                        <i class="fas fa-sign-in-alt"></i>
+                        Sign In
+                    </button>
+                </div>
+
+                <div id="loginError" class="error-message" style="display: none;"></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-storage-compat.js"></script>
+
+    <!-- Firebase Config -->
+    <script src="../js/firebase-config.js"></script>
+
+    <!-- Login Script -->
+    <script>
+        const loginForm = document.getElementById('loginForm');
+        const loginError = document.getElementById('loginError');
+
+        // Whitelist of authorized admin emails
+        const AUTHORIZED_EMAILS = [
+            'globalsmileconsulting@gmail.com',
+            'admin@globalsmileconsulting.com'
+        ];
+
+        function isAuthorizedEmail(email) {
+            return AUTHORIZED_EMAILS.includes(email.toLowerCase().trim());
+        }
+
+        loginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            try {
+                loginError.style.display = 'none';
+
+                // Check if email is in whitelist before attempting login
+                if (!isAuthorizedEmail(email)) {
+                    throw new Error('Unauthorized: This email is not authorized to access the admin panel');
+                }
+
+                const userCredential = await auth.signInWithEmailAndPassword(email, password);
+
+                // Check if user is admin
+                const user = userCredential.user;
+
+                // Double-check email authorization after login
+                if (!isAuthorizedEmail(user.email)) {
+                    await auth.signOut();
+                    throw new Error('Unauthorized: This email is not authorized to access the admin panel');
+                }
+
+                const idTokenResult = await user.getIdTokenResult();
+
+                if (idTokenResult.claims.admin) {
+                    // Redirect to admin dashboard
+                    window.location.href = 'admin-dashboard.html';
+                } else {
+                    await auth.signOut();
+                    throw new Error('Unauthorized: Admin privileges required');
+                }
+            } catch (error) {
+                loginError.textContent = error.message;
+                loginError.style.display = 'block';
+            }
+        });
+
+        // Check if already logged in
+        auth.onAuthStateChanged(async (user) => {
+            if (user) {
+                // Verify email is authorized
+                if (!isAuthorizedEmail(user.email)) {
+                    await auth.signOut();
+                    loginError.textContent = 'Unauthorized: This email is not authorized to access the admin panel';
+                    loginError.style.display = 'block';
+                    return;
+                }
+
+                const idTokenResult = await user.getIdTokenResult();
+                if (idTokenResult.claims.admin) {
+                    window.location.href = 'admin-dashboard.html';
+                }
+            }
+        });
+    </script>
+</body>
+</html>

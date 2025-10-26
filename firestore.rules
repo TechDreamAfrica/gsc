@@ -1,0 +1,80 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper function to check if user is authenticated
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    // Helper function to check if user email is whitelisted (no admin claim needed)
+    function isWhitelistedEmail() {
+      return isAuthenticated() && (
+        request.auth.token.email == 'globalsmileconsulting@gmail.com' ||
+        request.auth.token.email == 'admin@globalsmileconsulting.com'
+      );
+    }
+
+    // About Collection
+    // - Public read access
+    // - Whitelisted email write access only
+    match /about/{document} {
+      allow read: if true;
+      allow create, update, delete: if isWhitelistedEmail();
+    }
+
+    // Services Collection
+    // - Public read access
+    // - Whitelisted email write access only
+    match /services/{document} {
+      allow read: if true;
+      allow create, update, delete: if isWhitelistedEmail();
+    }
+
+    // Statistics Collection
+    // - Public read access
+    // - Whitelisted email write access only
+    match /statistics/{document} {
+      allow read: if true;
+      allow create, update, delete: if isWhitelistedEmail();
+    }
+
+    // Packages Collection
+    // - Public read access
+    // - Whitelisted email write access only
+    match /packages/{document} {
+      allow read: if true;
+      allow create, update, delete: if isWhitelistedEmail();
+    }
+
+    // Applications Collection
+    // - Anyone can create (submit application)
+    // - Only whitelisted emails can read, update, delete
+    match /applications/{document} {
+      // Allow anyone to create new applications with validation
+      allow create: if request.resource.data.keys().hasAll([
+          'referenceNumber',
+          'service',
+          'fullName',
+          'email',
+          'phone',
+          'status'
+        ]) &&
+        request.resource.data.status == 'pending';
+
+      // Only whitelisted emails can read
+      allow read: if isWhitelistedEmail();
+
+      // Only whitelisted emails can update
+      allow update: if isWhitelistedEmail();
+
+      // Only whitelisted emails can delete
+      allow delete: if isWhitelistedEmail();
+    }
+
+    // Deny access to all other collections
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Services - Admin</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/admin-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="admin-body">
+    <!-- Admin Navigation -->
+    <nav class="admin-navbar">
+        <div class="admin-nav-container">
+            <div class="admin-logo">
+                <i class="fas fa-smile"></i>
+                <span>Global Smile Admin</span>
+            </div>
+            <div class="admin-user">
+                <span id="adminEmail"></span>
+                <button id="logoutBtn" class="btn btn-logout">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <ul class="admin-menu">
+                <li class="menu-item">
+                    <a href="dashboard.html">
+                        <i class="fas fa-dashboard"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="about.html">
+                        <i class="fas fa-info-circle"></i>
+                        <span>About Section</span>
+                    </a>
+                </li>
+                <li class="menu-item active">
+                    <a href="../services.html">
+                        <i class="fas fa-cogs"></i>
+                        <span>Services</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="statistics.html">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Statistics</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="packages.html">
+                        <i class="fas fa-box"></i>
+                        <span>Service Packages</span>
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-content">
+            <div class="content-header">
+                <h1>Manage Services</h1>
+                <button id="addNewBtn" class="btn btn-primary">
+                    <i class="fas fa-plus"></i> Add New Service
+                </button>
+            </div>
+
+            <!-- Service Form Modal -->
+            <div id="serviceModal" class="modal">
+                <div class="modal-content modal-large">
+                    <div class="modal-header">
+                        <h2 id="modalTitle">Add Service</h2>
+                        <button class="close-btn" onclick="closeModal()">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <form id="serviceForm">
+                        <input type="hidden" id="serviceId">
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="category">Service Category *</label>
+                                <select id="category" required>
+                                    <option value="">Select Category</option>
+                                    <option value="business">Business Development</option>
+                                    <option value="accounting">Accounting Services</option>
+                                    <option value="hr">Human Resources</option>
+                                    <option value="training">Training & Development</option>
+                                    <option value="marketing">Marketing Services</option>
+                                    <option value="regulatory">Regulatory Services</option>
+                                    <option value="legal">Legal & Documentation</option>
+                                    <option value="other">Other Services</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="icon">Icon (Font Awesome class) *</label>
+                                <input type="text" id="icon" required placeholder="e.g., fa-briefcase">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="title">Service Title *</label>
+                            <input type="text" id="title" required placeholder="Enter service title">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="description">Description *</label>
+                            <textarea id="description" rows="4" required placeholder="Enter service description"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="features">Features (one per line)</label>
+                            <textarea id="features" rows="6" placeholder="Enter service features, one per line"></textarea>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="pricing">Pricing</label>
+                                <input type="text" id="pricing" placeholder="e.g., Starting from $500/month">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="order">Display Order</label>
+                                <input type="number" id="order" value="0" min="0">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="featured">
+                                <span>Featured Service</span>
+                            </label>
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Save Service
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Services List -->
+            <div class="data-table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Title</th>
+                            <th>Description</th>
+                            <th>Pricing</th>
+                            <th>Order</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="servicesTableBody">
+                        <tr>
+                            <td colspan="6" class="loading-cell">Loading...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-storage-compat.js"></script>
+
+    <!-- Firebase Config -->
+    <script src="../js/firebase-config.js"></script>
+
+    <!-- Services Management Script -->
+    <script src="../js/admin-services.js"></script>
+</body>
+</html>

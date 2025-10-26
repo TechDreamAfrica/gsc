@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply for Services - Global Smile Consulting</title>
+    <meta name="description" content="Apply for Global Smile Consulting services including business registration, passport assistance, accounting services, and more.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/apply.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-smile"></i>
+                <span>Global Smile Consulting</span>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="index.html#about" class="nav-link">About</a>
+                <div class="nav-dropdown">
+                    <a href="#" class="nav-link dropdown-toggle">
+                        Company <i class="fas fa-chevron-down"></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="index.html#approach" class="dropdown-item">Our Approach</a>
+                        <a href="index.html#values" class="dropdown-item">Our Values</a>
+                        <a href="index.html#services" class="dropdown-item">Services Overview</a>
+                        <a href="services.html" class="dropdown-item">All Services</a>
+                    </div>
+                </div>
+                <a href="index.html#contact" class="nav-link">Contact</a>
+                <a href="admin/admin-login.html" class="btn-admin">
+                    <i class="fas fa-lock"></i> Admin
+                </a>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page Header -->
+    <section class="page-header apply-header">
+        <div class="container">
+            <div class="header-content">
+                <h1>Apply for Our Services</h1>
+                <p>Fill out the form below to apply for any of our professional services</p>
+                <nav class="breadcrumb">
+                    <a href="index.html">Home</a>
+                    <span>/</span>
+                    <span>Apply</span>
+                </nav>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Steps -->
+    <section class="application-steps">
+        <div class="container">
+            <div class="steps-container">
+                <div class="step" data-step="1">
+                    <div class="step-number active">1</div>
+                    <p>Select Service</p>
+                </div>
+                <div class="step" data-step="2">
+                    <div class="step-number">2</div>
+                    <p>Fill Details</p>
+                </div>
+                <div class="step" data-step="3">
+                    <div class="step-number">3</div>
+                    <p>Review & Submit</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Application Form Section -->
+    <section class="application-section">
+        <div class="container">
+            <!-- Step 1: Service Selection -->
+            <div id="step1" class="form-step active">
+                <h2>Select a Service</h2>
+                <p class="step-description">Choose the service you would like to apply for</p>
+
+                <div id="servicesGrid" class="services-selection-grid">
+                    <div class="service-loading">
+                        <i class="fas fa-spinner fa-spin"></i>
+                        <p>Loading services...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2: Application Form -->
+            <div id="step2" class="form-step">
+                <div class="form-header">
+                    <button class="btn-back" onclick="goToStep(1)">
+                        <i class="fas fa-arrow-left"></i> Back
+                    </button>
+                    <div>
+                        <h2 id="selectedServiceTitle">Application Form</h2>
+                        <p id="selectedServiceDescription"></p>
+                    </div>
+                </div>
+
+                <form id="applicationForm" class="application-form">
+                    <!-- Personal Information -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-user"></i> Personal Information</h3>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="fullName">Full Name *</label>
+                                <input type="text" id="fullName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="phone">Phone Number *</label>
+                                <input type="tel" id="phone" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="altPhone">Alternative Phone</label>
+                                <input type="tel" id="altPhone">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Residential Address *</label>
+                            <textarea id="address" rows="2" required></textarea>
+                        </div>
+                    </div>
+
+                    <!-- Service-Specific Fields (dynamically populated) -->
+                    <div id="serviceSpecificFields"></div>
+
+                    <!-- Additional Information -->
+                    <div class="form-section">
+                        <h3><i class="fas fa-file-alt"></i> Additional Information</h3>
+                        <div class="form-group">
+                            <label for="additionalNotes">Additional Notes or Requirements</label>
+                            <textarea id="additionalNotes" rows="4" placeholder="Any specific requirements or information we should know..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" onclick="goToStep(1)">Back</button>
+                        <button type="button" class="btn btn-primary" onclick="goToStep(3)">
+                            Continue to Review <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Step 3: Review & Submit -->
+            <div id="step3" class="form-step">
+                <div class="form-header">
+                    <button class="btn-back" onclick="goToStep(2)">
+                        <i class="fas fa-arrow-left"></i> Back to Edit
+                    </button>
+                    <h2>Review Your Application</h2>
+                </div>
+
+                <div class="review-container">
+                    <div class="review-section">
+                        <h3>Service Applied For</h3>
+                        <p id="reviewService" class="review-value"></p>
+                    </div>
+
+                    <div class="review-section">
+                        <h3>Personal Information</h3>
+                        <div class="review-grid">
+                            <div><strong>Name:</strong> <span id="reviewName"></span></div>
+                            <div><strong>Email:</strong> <span id="reviewEmail"></span></div>
+                            <div><strong>Phone:</strong> <span id="reviewPhone"></span></div>
+                            <div><strong>Address:</strong> <span id="reviewAddress"></span></div>
+                        </div>
+                    </div>
+
+                    <div id="reviewServiceFields"></div>
+
+                    <div class="review-section" id="reviewNotesSection" style="display: none;">
+                        <h3>Additional Notes</h3>
+                        <p id="reviewNotes"></p>
+                    </div>
+
+                    <div class="terms-section">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="agreeTerms" required>
+                            <span>I confirm that all information provided is accurate and I agree to the <a href="#" target="_blank">terms and conditions</a></span>
+                        </label>
+                    </div>
+
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-secondary" onclick="goToStep(2)">Edit Application</button>
+                        <button type="button" class="btn btn-primary" onclick="submitApplication()">
+                            <i class="fas fa-paper-plane"></i> Submit Application
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Success Message -->
+            <div id="successMessage" class="success-container" style="display: none;">
+                <div class="success-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h2>Application Submitted Successfully!</h2>
+                <p>Thank you for choosing Global Smile Consulting. Your application has been received and we will contact you shortly.</p>
+                <div class="application-ref">
+                    <strong>Reference Number:</strong> <span id="applicationRef"></span>
+                </div>
+                <p class="success-note">Please save this reference number for your records. We will review your application and get back to you within 2-3 business days.</p>
+                <div class="success-actions">
+                    <a href="index.html" class="btn btn-primary">Go to Homepage</a>
+                    <button class="btn btn-secondary" onclick="location.reload()">Submit Another Application</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-smile"></i>
+                        <span>Global Smile Consulting</span>
+                    </div>
+                    <p>Empowering businesses to achieve their full potential through innovative solutions and expert guidance.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="apply.html">Apply Now</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <div class="contact-info-footer">
+                        <p><i class="fas fa-map-marker-alt"></i> Agona Swedru, Ghana</p>
+                        <p><i class="fas fa-phone"></i> 0243434872</p>
+                        <p><i class="fas fa-envelope"></i> info@globalsmileconsulting.com</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Global Smile Consulting Ltd. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="js/firebase-config.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/apply.js"></script>
+</body>
+</html>

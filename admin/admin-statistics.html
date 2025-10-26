@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Statistics - Admin</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/admin-styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="admin-body">
+    <!-- Admin Navigation -->
+    <nav class="admin-navbar">
+        <div class="admin-nav-container">
+            <div class="admin-logo">
+                <i class="fas fa-smile"></i>
+                <span>Global Smile Admin</span>
+            </div>
+            <div class="admin-user">
+                <span id="adminEmail"></span>
+                <button id="logoutBtn" class="btn btn-logout">
+                    <i class="fas fa-sign-out-alt"></i> Logout
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="admin-container">
+        <!-- Sidebar -->
+        <aside class="admin-sidebar">
+            <ul class="admin-menu">
+                <li class="menu-item">
+                    <a href="dashboard.html">
+                        <i class="fas fa-dashboard"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="about.html">
+                        <i class="fas fa-info-circle"></i>
+                        <span>About Section</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="../services.html">
+                        <i class="fas fa-cogs"></i>
+                        <span>Services</span>
+                    </a>
+                </li>
+                <li class="menu-item active">
+                    <a href="statistics.html">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Statistics</span>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="packages.html">
+                        <i class="fas fa-box"></i>
+                        <span>Service Packages</span>
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="admin-content">
+            <div class="content-header">
+                <h1>Manage Statistics</h1>
+                <button id="addNewBtn" class="btn btn-primary">
+                    <i class="fas fa-plus"></i> Add New Statistic
+                </button>
+            </div>
+
+            <!-- Statistics Form Modal -->
+            <div id="statModal" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 id="modalTitle">Add Statistic</h2>
+                        <button class="close-btn" onclick="closeModal()">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <form id="statForm">
+                        <input type="hidden" id="statId">
+
+                        <div class="form-group">
+                            <label for="label">Label *</label>
+                            <input type="text" id="label" required placeholder="e.g., Businesses Empowered, Years Experience">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="value">Value *</label>
+                            <input type="number" id="value" required placeholder="e.g., 500, 10">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="suffix">Suffix</label>
+                            <input type="text" id="suffix" placeholder="e.g., +, %, K">
+                            <small>Add a suffix like + or % to appear after the number</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="icon">Icon (Font Awesome class)</label>
+                            <input type="text" id="icon" placeholder="e.g., fa-users, fa-chart-line">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="order">Display Order</label>
+                            <input type="number" id="order" value="0" min="0">
+                        </div>
+
+                        <div class="form-actions">
+                            <button type="button" class="btn btn-secondary" onclick="closeModal()">Cancel</button>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Save Statistic
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Statistics List -->
+            <div class="data-table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Label</th>
+                            <th>Value</th>
+                            <th>Display</th>
+                            <th>Icon</th>
+                            <th>Order</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="statsTableBody">
+                        <tr>
+                            <td colspan="6" class="loading-cell">Loading...</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-storage-compat.js"></script>
+
+    <!-- Firebase Config -->
+    <script src="../js/firebase-config.js"></script>
+
+    <!-- Statistics Management Script -->
+    <script src="../js/admin-statistics.js"></script>
+</body>
+</html>

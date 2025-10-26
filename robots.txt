@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://globalsmileconsulting.com/sitemap.xml
+
+# Disallow specific files/folders if any (none currently)
+# Disallow: /admin/
+# Disallow: /private/
+
+# Crawl-delay (optional - helps prevent overloading server)
+Crawl-delay: 1
