@@ -86,25 +86,17 @@
                 }
 
                 const userCredential = await auth.signInWithEmailAndPassword(email, password);
-
-                // Check if user is admin
                 const user = userCredential.user;
 
-                // Double-check email authorization after login
+                // Double-check email authorization after login (no admin claim check needed)
                 if (!isAuthorizedEmail(user.email)) {
                     await auth.signOut();
                     throw new Error('Unauthorized: This email is not authorized to access the admin panel');
                 }
 
-                const idTokenResult = await user.getIdTokenResult();
+                // Email is whitelisted - redirect to admin dashboard
+                window.location.href = 'admin-dashboard.html';
 
-                if (idTokenResult.claims.admin) {
-                    // Redirect to admin dashboard
-                    window.location.href = 'admin-dashboard.html';
-                } else {
-                    await auth.signOut();
-                    throw new Error('Unauthorized: Admin privileges required');
-                }
             } catch (error) {
                 loginError.textContent = error.message;
                 loginError.style.display = 'block';
@@ -114,7 +106,7 @@
         // Check if already logged in
         auth.onAuthStateChanged(async (user) => {
             if (user) {
-                // Verify email is authorized
+                // Verify email is authorized (no admin claim check needed)
                 if (!isAuthorizedEmail(user.email)) {
                     await auth.signOut();
                     loginError.textContent = 'Unauthorized: This email is not authorized to access the admin panel';
@@ -122,10 +114,8 @@
                     return;
                 }
 
-                const idTokenResult = await user.getIdTokenResult();
-                if (idTokenResult.claims.admin) {
-                    window.location.href = 'admin-dashboard.html';
-                }
+                // Email is whitelisted - redirect to dashboard
+                window.location.href = 'admin-dashboard.html';
             }
         });
     </script>

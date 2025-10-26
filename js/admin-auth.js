@@ -19,7 +19,7 @@ async function checkAdminAccess() {
                 return;
             }
 
-            // Verify email is authorized
+            // Verify email is authorized (no admin claim check needed)
             if (!isAuthorizedEmail(user.email)) {
                 await auth.signOut();
                 alert('Unauthorized: This email is not authorized to access the admin panel');
@@ -28,15 +28,7 @@ async function checkAdminAccess() {
                 return;
             }
 
-            const idTokenResult = await user.getIdTokenResult();
-            if (!idTokenResult.claims.admin) {
-                await auth.signOut();
-                alert('Unauthorized: Admin privileges required');
-                window.location.href = 'admin-login.html';
-                reject('No admin privileges');
-                return;
-            }
-
+            // User is authenticated and whitelisted - grant access
             resolve(user);
         });
     });
